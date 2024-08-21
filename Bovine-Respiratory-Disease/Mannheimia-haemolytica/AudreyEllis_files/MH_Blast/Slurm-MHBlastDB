@@ -1,0 +1,16 @@
+#!/bin/bash -l
+#SBATCH --time=3:00:00
+#SBATCH -A john2185
+#SBATCH -n 10
+#SBATCH --output=/depot/john2185/data/ellis123/MH_Blast/task01.out
+#SBATCH --error=/depot/john2185/data/ellis123/MH_Blast/task01.error.out
+#SBATCH --job-name task01
+
+ml bioinfo
+ml blast
+
+makeblastdb -in Mh_RefGenes.txt -dbtype prot -out MH_protein_db
+
+
+echo "End Time"
+date +"%d %B %Y %H:%M:%S"

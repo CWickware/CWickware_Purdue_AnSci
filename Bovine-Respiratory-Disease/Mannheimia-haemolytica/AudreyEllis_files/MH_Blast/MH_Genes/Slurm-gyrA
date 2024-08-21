@@ -1,0 +1,17 @@
+#!/bin/bash -l
+#SBATCH --time=3:00:00
+#SBATCH -A john2185
+#SBATCH -n 10
+#SBATCH --output=/scratch/bell/ellis123/MH_Blast/MH_BlastOut/task01.out
+#SBATCH --error=/scratch/bell/ellis123/MH_Blast/MH_BlastOut/task01.error.out
+#SBATCH --job-name task01
+
+touch MH-gyrA.fa
+
+for i in *blast-output.txt;
+  do echo ">"$i >> MH-gyrA.fa;
+  grep "gyrA" $i | cut -f 13 >> MH-gyrA.fa;
+done
+
+echo "End Time"
+date +"%d %B %Y %H:%M:%S"
