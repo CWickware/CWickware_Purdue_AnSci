@@ -1,0 +1,17 @@
+#!/bin/bash -l
+#SBATCH --time=3:00:00
+#SBATCH -A john2185
+#SBATCH -n 10
+#SBATCH --output=/scratch/bell/ellis123/MH_Blast/task01.out
+#SBATCH --error=/scratch/bell/ellis123/MH_Blast/task01.error.out
+#SBATCH --job-name task01
+
+ml bioinfo
+ml blast
+
+#Sequences located in MH_spades directory. 
+
+for x in MH_spades/*.fasta; do blastx -query $x -db MH_protein_db -num_threads 2 -evalue 1e-125 -max_target_seqs 10 -out $x-blast-output.txt -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qseq"; done
+
+echo "End Time"
+date +"%d %B %Y %H:%M:%S"
