@@ -1,0 +1,21 @@
+echo "Looking for phenicols (florfenicol)"
+
+for file in *abbrev.txt; do awk -F ',' 'BEGIN{print ARGV[1]}$4 ~ /phenicol/ {print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7}END{}' $file >> phenicol_CARD.txt; done
+
+echo "Looking for fluoroquinolones (danofloxacin and enrofloxacin)"
+
+for file in *abbrev.txt; do awk -F ',' 'BEGIN{print ARGV[1]}$4 ~ /fluoroquinolone/ {print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7}END{}' $file >> fq_CARD.txt; done
+
+echo "Looking for MLS (tildipirosin, tilmicosin, and tulathromycin)"
+
+for file in *abbrev.txt; do awk -F ',' 'BEGIN{print ARGV[1]}$4 ~ /macrolide/ {print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7}END{}' $file >> Mls_CARD.txt; done
+
+for file in *abbrev.txt; do awk -F ',' 'BEGIN{print ARGV[1]}$4 ~ /lincosamide/ {print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7}END{}' $file >> mLs_CARD.txt; done
+
+for file in *abbrev.txt; do awk -F ',' 'BEGIN{print ARGV[1]}$4 ~ /streptogramin/ {print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7}END{}' $file >> mlS_CARD.txt; done
+
+echo "Looking for tetracyclines (tet, ctet, otet)"
+
+for file in *abbrev.txt; do awk -F ',' 'BEGIN{print ARGV[1]}$4 ~ /tetracycline/ {print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5 "\t" $6 "\t" $7}END{}' $file >> tet_CARD.txt; done
+
+echo "Finished"
