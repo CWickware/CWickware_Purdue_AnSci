@@ -26,9 +26,9 @@ kover dataset create from-tsv --genomic-data /scratch/bell/clwickwa/BRD_Working/
 
 kover dataset info --dataset TILM.kover --genome-count --kmer-count
 
-kover dataset split --dataset TILM.kover --id TILM_split --train-size 0.666 --folds 20 --random-seed 3 --progress
+kover dataset split --dataset TILM.kover --id TILM_split --train-size 0.666 --folds 5 --random-seed 9 --progress
 
-kover learn cart --dataset TILM.kover --split TILM_split --class-importance 0.25 0.5 0.75 1.0 --hp-choice cv --n-cpu 2 --progress
+kover learn scm --dataset TILM.kover --split TILM_split --model-type conjunction disjunction --p 0.1 0.178 0.316 0.562 1.0 1.778 3.162 5.623 10.0 --max-rules 5 --hp-choice cv --n-cpu 2 --progress
 
 #log end time
 echo "end KOVER" >> log
